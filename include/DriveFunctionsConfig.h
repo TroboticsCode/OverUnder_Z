@@ -41,7 +41,7 @@ void initDriveMotors();
  */
 //update drive motor ports here - front ports, then middle, then rear
 static int32_t leftDrivePorts[] = {PORT1, PORT2};
-static int32_t rightDrivePorts[] = {PORT4, PORT5};
+static int32_t rightDrivePorts[] = {PORT3, PORT4};
 
 static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 
@@ -50,8 +50,8 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
  *  axes here
  */
 #ifndef CHASSIS_X_DRIVE
- #define ARCADE_CONTROL
- //#define TANK_CONTROL
+ //#define ARCADE_CONTROL
+#define TANK_CONTROL
 #endif
 
 #ifdef ARCADE_CONTROL
@@ -115,7 +115,7 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 #define GEAR_SET    GREEN
 
 //#define PID
-//#define GYRO
+#define GYRO
 
 #ifdef PID
   void setLinGains(double kP, double kI, double kD, double slewRate, int minDT);

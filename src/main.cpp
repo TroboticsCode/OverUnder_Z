@@ -62,28 +62,23 @@ void autonomous(void)
 
 void usercontrol(void) { 
   //add local user control variables here:
-  tester.setVelocity(100, pct);
+  Puncher.setVelocity(25, pct);
 
   //User control code here, inside the loop:
   //remove existing demo code and replace with you own! Then remove this comment
   while (1) {
-    if(Controller1.ButtonA.pressing())
-    {
-      tester.spin(directionType::fwd, 100, velocityUnits::pct);
+
+    if(Controller1.ButtonA.pressing()){
+      Puncher.spin(directionType::rev);
     }
-    else
-    {
-      tester.stop(brakeType::coast);
+    if(Controller1.ButtonB.pressing()){
+      Puncher.stop();
     }
-    //leave the drive code here, it should work if you set up 
-    // DriveFunctionsConfig.h properly
     userDrive();
 
-    wait(20, msec); // Sleep the task for a short amount of time to
+    wait(10, msec);
   }
-}
-
-
+}  
 // Main will set up the competition functions and callbacks.
 
 int main() {

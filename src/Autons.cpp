@@ -33,11 +33,8 @@ void Auton1()
   Brain.Screen.print("I AM AUTON 1");
   Brain.Screen.newLine();
 
-  moveLinear(48, 100, 10000);
-  moveLinear(-48, 100, 100000);
-
-  moveRotate(720, 100, 100000);
-  moveRotate(-720, 100, 100000);
+//MoveLinear(dist[in.], speed, wait time[mil])
+  moveLinear(41, 100, 10000);
 }
 
 void Auton2()

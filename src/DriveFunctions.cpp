@@ -137,17 +137,16 @@ void moveLinear(float distance, int velocity, uint32_t timeOut)
 #elif !defined (PID)
   for(uint8_t i = 0; i<numDriveMotors; i++)
   {
-    leftDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
-
     if(i == numDriveMotors-1) //this is the last motor in the array and needs to be blocking so we complete the move
     {
       rightDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, true);
+      leftDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, true);
     }
     else
     {
       rightDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
+      leftDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
     }
-
   }
 #endif
 }
@@ -249,15 +248,15 @@ void moveRotate(int16_t degrees, int velocity, uint32_t timeOut)
   Brain.Screen.print("Doing basing rotate");
   for(uint8_t i = 0; i<numDriveMotors; i++)
   {
-    leftDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
-
     if(i == numDriveMotors-1) //this is the last motor in the array and needs to be blocking so we complete the move
     {
       rightDriveMotors[i].spinFor(-1*rotations, rotationUnits::rev, velocity, velocityUnits::pct, true);
+      leftDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, true);
     }
     else
     {
       rightDriveMotors[i].spinFor(-1*rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
+      leftDriveMotors[i].spinFor(rotations, rotationUnits::rev, velocity, velocityUnits::pct, false);
     }
   }
 #endif

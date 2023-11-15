@@ -10,7 +10,7 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor tester = motor(PORT17, GREEN, true);
+motor Puncher = motor(PORT5, ratio18_1, false);
 
 // VEXcode generated functions
 
